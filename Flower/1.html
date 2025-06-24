@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoa Tươi Xinh - Cửa hàng hoa tươi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Category Filter - ĐẶT Ở ĐẦU -->
+    <input type="radio" name="category" id="all" class="category-filter" checked>
+    <input type="radio" name="category" id="rose" class="category-filter">
+    <input type="radio" name="category" id="tulip" class="category-filter">
+    <input type="radio" name="category" id="lily" class="category-filter">
+    <input type="radio" name="category" id="sunflower" id="sunflower" class="category-filter">
+    <input type="radio" name="category" id="orchid" class="category-filter">
+    <input type="radio" name="category" id="carnation" class="category-filter">
+    <input type="radio" name="category" id="chrysanthemum" class="category-filter">
+
+    <!-- Cart Toggle -->
+    <input type="checkbox" id="cart-toggle" class="cart-toggle">
+
+    <!-- Product Cart Checkboxes -->
+    <input type="checkbox" id="product-1" class="product-cart">
+    <input type="checkbox" id="product-2" class="product-cart">
+    <input type="checkbox" id="product-3" class="product-cart">
+    <input type="checkbox" id="product-4" class="product-cart">
+    <input type="checkbox" id="product-5" class="product-cart">
+    <input type="checkbox" id="product-6" class="product-cart">
+    <input type="checkbox" id="product-7" class="product-cart">
+    <input type="checkbox" id="product-8" class="product-cart">
+    <input type="checkbox" id="product-9" class="product-cart">
+    <input type="checkbox" id="product-10" class="product-cart">
+    <input type="checkbox" id="product-11" class="product-cart">
+    <input type="checkbox" id="product-12" class="product-cart">
+    <input type="checkbox" id="product-13" class="product-cart">
+    <input type="checkbox" id="product-14" class="product-cart">
+    <input type="checkbox" id="product-15" class="product-cart">
+    <input type="checkbox" id="product-16" class="product-cart">
+
+    <!-- Success Notification -->
+    <div class="notification success-message">
+        <span>✅ Đã thêm sản phẩm vào giỏ hàng!</span>
+    </div>
+
+    <!-- Payment Success Notification -->
+    <div class="notification payment-success-message">
+        <span>🎉 Thanh toán thành công! Cảm ơn bạn đã mua hàng!</span>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1>🌸 Hoa Tươi Xinh</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Trang chủ</a></li>
+                <li><a href="#categories" class="nav-link">Danh mục</a></li>
+                <li><a href="#products" class="nav-link">Sản phẩm</a></li>
+                <li><a href="#about" class="nav-link">Giới thiệu</a></li>
+                <li><a href="#contact" class="nav-link">Liên hệ</a></li>
+            </ul>
+            <div class="cart-container">
+                <label for="cart-toggle" class="cart-button">
+                    🛒
+                    <span class="cart-count">0</span>
+                </label>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Shopping Cart -->
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <div class="cart-header-info">
+                <h3>🛒 Giỏ hàng của bạn</h3>
+                <span class="cart-item-count">(<span class="item-count">0</span> sản phẩm)</span>
+            </div>
+            <label for="cart-toggle" class="cart-close">
+                <span>✕</span>
+            </label>
+        </div>
+        
+        <div class="cart-content">
+            <div class="cart-items">
+                <!-- Empty cart state -->
+                <div class="empty-cart">
+                    <div class="empty-cart-icon">🛒</div>
+                    <h4>Giỏ hàng trống</h4>
+                    <p>Hãy thêm sản phẩm yêu thích vào giỏ hàng</p>
+                    <label for="cart-toggle" class="btn btn-primary continue-shopping">
+                        Tiếp tục mua sắm
+                    </label>
+                </div>
+                
+                <!-- Cart items -->
+                <div class="cart-item" data-product="1">
+                    <div class="cart-item-image">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Hoa hồng đỏ">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-name">Hoa hồng đỏ</h4>
+                        <p class="cart-item-description">Bó hoa hồng đỏ tươi thắm</p>
+                        <div class="cart-item-price">
+                            <span class="price">450.000đ</span>
+                        </div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" onclick="updateQuantity(1, -1)">−</button>
+                            <span class="quantity" id="qty-1">1</span>
+                            <button class="qty-btn plus" onclick="updateQuantity(1, 1)">+</button>
+                        </div>
+                        <label for="product-1" class="remove-item" title="Xóa sản phẩm">
+                            🗑️
+                        </label>
+                    </div>
+                </div>
+
+                <div class="cart-item" data-product="2">
+                    <div class="cart-item-image">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Hoa hồng trắng">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-name">Hoa hồng trắng</h4>
+                        <p class="cart-item-description">Hoa hồng trắng tinh khôi</p>
+                        <div class="cart-item-price">
+                            <span class="price">420.000đ</span>
+                        </div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" onclick="updateQuantity(2, -1)">−</button>
+                            <span class="quantity" id="qty-2">1</span>
+                            <button class="qty-btn plus" onclick="updateQuantity(2, 1)">+</button>
+                        </div>
+                        <label for="product-2" class="remove-item" title="Xóa sản phẩm">
+                            🗑️
+                        </label>
+                    </div>
+                </div>
+
+                <div class="cart-item" data-product="3">
+                    <div class="cart-item-image">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Hoa hồng hồng">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-name">Hoa hồng hồng</h4>
+                        <p class="cart-item-description">Hoa hồng màu hồng dịu dàng</p>
+                        <div class="cart-item-price">
+                            <span class="price">430.000đ</span>
+                        </div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" onclick="updateQuantity(3, -1)">−</button>
+                            <span class="quantity" id="qty-3">1</span>
+                            <button class="qty-btn plus" onclick="updateQuantity(3, 1)">+</button>
+                        </div>
+                        <label for="product-3" class="remove-item" title="Xóa sản phẩm">
+                            🗑️
+                        </label>
+                    </div>
+                </div>
+
+                <div class="cart-item" data-product="4">
+                    <div class="cart-item-image">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Hoa tulip đỏ">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-name">Hoa tulip đỏ</h4>
+                        <p class="cart-item-description">Hoa tulip đỏ rực rỡ</p>
+                        <div class="cart-item-price">
+                            <span class="price">380.000đ</span>
+                        </div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" onclick="updateQuantity(4, -1)">−</button>
+                            <span class="quantity" id="qty-4">1</span>
+                            <button class="qty-btn plus" onclick="updateQuantity(4, 1)">+</button>
+                        </div>
+                        <label for="product-4" class="remove-item" title="Xóa sản phẩm">
+                            🗑️
+                        </label>
+                    </div>
+                </div>
+
+                <div class="cart-item" data-product="5">
+                    <div class="cart-item-image">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Hoa tulip vàng">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-name">Hoa tulip vàng</h4>
+                        <p class="cart-item-description">Hoa tulip vàng tươi sáng</p>
+                        <div class="cart-item-price">
+                            <span class="price">360.000đ</span>
+                        </div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" onclick="updateQuantity(5, -1)">−</button>
+                            <span class="quantity" id="qty-5">1</span>
+                            <button class="qty-btn plus" onclick="updateQuantity(5, 1)">+</button>
+                        </div>
+                        <label for="product-5" class="remove-item" title="Xóa sản phẩm">
+                            🗑️
+                        </label>
+                    </div>
+                </div>
+
+                <div class="cart-item" data-product="6">
+                    <div class="cart-item-image">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Hoa tulip tím">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-name">Hoa tulip tím</h4>
+                        <p class="cart-item-description">Hoa tulip tím bí ẩn</p>
+                        <div class="cart-item-price">
+                            <span class="price">390.000đ</span>
+                        </div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" onclick="updateQuantity(6, -1)">−</button>
+                            <span class="quantity" id="qty-6">1</span>
+                            <button class="qty-btn plus" onclick="updateQuantity(6, 1)">+</button>
+                        </div>
+                        <label for="product-6" class="remove-item" title="Xóa sản phẩm">
+                            🗑️
+                        </label>
+                    </div>
+                </div>
+
+                <div class="cart-item" data-product="7">
+                    <div class="cart-item-image">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Hoa lily trắng">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-name">Hoa lily trắng</h4>
+                        <p class="cart-item-description">Hoa lily trắng thanh khiết</p>
+                        <div class="cart-item-price">
+                            <span class="price">520.000đ</span>
+                        </div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" onclick="updateQuantity(7, -1)">−</button>
+                            <span class="quantity" id="qty-7">1</span>
+                            <button class="qty-btn plus" onclick="updateQuantity(7, 1)">+</button>
+                        </div>
+                        <label for="product-7" class="remove-item" title="Xóa sản phẩm">
+                            🗑️
+                        </label>
+                    </div>
+                </div>
+
+                <div class="cart-item" data-product="8">
+                    <div class="cart-item-image">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Hoa lily hồng">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-name">Hoa lily hồng</h4>
+                        <p class="cart-item-description">Hoa lily hồng nhẹ nhàng</p>
+                        <div class="cart-item-price">
+                            <span class="price">540.000đ</span>
+                        </div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" onclick="updateQuantity(8, -1)">−</button>
+                            <span class="quantity" id="qty-8">1</span>
+                            <button class="qty-btn plus" onclick="updateQuantity(8, 1)">+</button>
+                        </div>
+                        <label for="product-8" class="remove-item" title="Xóa sản phẩm">
+                            🗑️
+                        </label>
+                    </div>
+                </div>
+
+                <div class="cart-item" data-product="9">
+                    <div class="cart-item-image">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Hoa hướng dương">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-name">Hoa hướng dương</h4>
+                        <p class="cart-item-description">Hoa hướng dương tươi vui</p>
+                        <div class="cart-item-price">
+                            <span class="price">280.000đ</span>
+                        </div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" onclick="updateQuantity(9, -1)">−</button>
+                            <span class="quantity" id="qty-9">1</span>
+                            <button class="qty-btn plus" onclick="updateQuantity(9, 1)">+</button>
+                        </div>
+                        <label for="product-9" class="remove-item" title="Xóa sản phẩm">
+                            🗑️
+                        </label>
+                    </div>
+                </div>
+
+                <div class="cart-item" data-product="10">
+                    <div class="cart-item-image">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Hoa hướng dương mini">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-name">Hoa hướng dương mini</h4>
+                        <p class="cart-item-description">Hoa hướng dương mini xinh xắn</p>
+                        <div class="cart-item-price">
+                            <span class="price">250.000đ</span>
+                        </div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" onclick="updateQuantity(10, -1)">−</button>
+                            <span class="quantity" id="qty-10">1</span>
+                            <button class="qty-btn plus" onclick="updateQuantity(10, 1)">+</button>
+                        </div>
+                        <label for="product-10" class="remove-item" title="Xóa sản phẩm">
+                            🗑️
+                        </label>
+                    </div>
+                </div>
+
+                <div class="cart-item" data-product="11">
+                    <div class="cart-item-image">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Hoa lan tím">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-name">Hoa lan tím</h4>
+                        <p class="cart-item-description">Hoa lan tím quý phái</p>
+                        <div class="cart-item-price">
+                            <span class="price">680.000đ</span>
+                        </div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" onclick="updateQuantity(11, -1)">−</button>
+                            <span class="quantity" id="qty-11">1</span>
+                            <button class="qty-btn plus" onclick="updateQuantity(11, 1)">+</button>
+                        </div>
+                        <label for="product-11" class="remove-item" title="Xóa sản phẩm">
+                            🗑️
+                        </label>
+                    </div>
+                </div>
+
+                <div class="cart-item" data-product="12">
+                    <div class="cart-item-image">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Hoa lan trắng">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-name">Hoa lan trắng</h4>
+                        <p class="cart-item-description">Hoa lan trắng tinh khôi</p>
+                        <div class="cart-item-price">
+                            <span class="price">720.000đ</span>
+                        </div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" onclick="updateQuantity(12, -1)">−</button>
+                            <span class="quantity" id="qty-12">1</span>
+                            <button class="qty-btn plus" onclick="updateQuantity(12, 1)">+</button>
+                        </div>
+                        <label for="product-12" class="remove-item" title="Xóa sản phẩm">
+                            🗑️
+                        </label>
+                    </div>
+                </div>
+
+                <div class="cart-item" data-product="13">
+                    <div class="cart-item-image">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Hoa cẩm chướng đỏ">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-name">Hoa cẩm chướng đỏ</h4>
+                        <p class="cart-item-description">Hoa cẩm chướng đỏ thắm</p>
+                        <div class="cart-item-price">
+                            <span class="price">320.000đ</span>
+                        </div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" onclick="updateQuantity(13, -1)">−</button>
+                            <span class="quantity" id="qty-13">1</span>
+                            <button class="qty-btn plus" onclick="updateQuantity(13, 1)">+</button>
+                        </div>
+                        <label for="product-13" class="remove-item" title="Xóa sản phẩm">
+                            🗑️
+                        </label>
+                    </div>
+                </div>
+
+                <div class="cart-item" data-product="14">
+                    <div class="cart-item-image">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Hoa cẩm chướng hồng">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-name">Hoa cẩm chướng hồng</h4>
+                        <p class="cart-item-description">Hoa cẩm chướng hồng dịu dàng</p>
+                        <div class="cart-item-price">
+                            <span class="price">300.000đ</span>
+                        </div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" onclick="updateQuantity(14, -1)">−</button>
+                            <span class="quantity" id="qty-14">1</span>
+                            <button class="qty-btn plus" onclick="updateQuantity(14, 1)">+</button>
+                        </div>
+                        <label for="product-14" class="remove-item" title="Xóa sản phẩm">
+                            🗑️
+                        </label>
+                    </div>
+                </div>
+
+                <div class="cart-item" data-product="15">
+                    <div class="cart-item-image">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Hoa cúc vàng">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-name">Hoa cúc vàng</h4>
+                        <p class="cart-item-description">Hoa cúc vàng tươi sáng</p>
+                        <div class="cart-item-price">
+                            <span class="price">240.000đ</span>
+                        </div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" onclick="updateQuantity(15, -1)">−</button>
+                            <span class="quantity" id="qty-15">1</span>
+                            <button class="qty-btn plus" onclick="updateQuantity(15, 1)">+</button>
+                        </div>
+                        <label for="product-15" class="remove-item" title="Xóa sản phẩm">
+                            🗑️
+                        </label>
+                    </div>
+                </div>
+
+                <div class="cart-item" data-product="16">
+                    <div class="cart-item-image">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Hoa cúc trắng">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-name">Hoa cúc trắng</h4>
+                        <p class="cart-item-description">Hoa cúc trắng thanh lịch</p>
+                        <div class="cart-item-price">
+                            <span class="price">220.000đ</span>
+                        </div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" onclick="updateQuantity(16, -1)">−</button>
+                            <span class="quantity" id="qty-16">1</span>
+                            <button class="qty-btn plus" onclick="updateQuantity(16, 1)">+</button>
+                        </div>
+                        <label for="product-16" class="remove-item" title="Xóa sản phẩm">
+                            🗑️
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Summary -->
+        <div class="cart-summary">
+            <div class="cart-actions">
+                <button class="clear-cart-btn" onclick="clearCart()">
+                    🗑️ Xóa tất cả
+                </button>
+                <div class="cart-savings">
+                    <span class="savings-text">💰 Tiết kiệm: <span class="savings-amount">0đ</span></span>
+                </div>
+            </div>
+            
+            <div class="cart-totals">
+                <div class="subtotal">
+                    <span>Tạm tính:</span>
+                    <span class="subtotal-amount">0đ</span>
+                </div>
+                <div class="shipping">
+                    <span>Phí vận chuyển:</span>
+                    <span class="shipping-amount">Miễn phí</span>
+                </div>
+                <div class="discount">
+                    <span>Giảm giá:</span>
+                    <span class="discount-amount">-0đ</span>
+                </div>
+                <div class="total">
+                    <span>Tổng cộng:</span>
+                    <span class="total-amount">0đ</span>
+                </div>
+            </div>
+
+            <div class="cart-checkout">
+                <div class="promo-code">
+                    <input type="text" placeholder="Nhập mã giảm giá" class="promo-input">
+                    <button class="apply-promo-btn">Áp dụng</button>
+                </div>
+                <button class="checkout-btn" onclick="processPayment()">
+                    <span class="checkout-icon">💳</span>
+                    <span>Thanh toán ngay</span>
+                    <span class="checkout-amount">0đ</span>
+                </button>
+                <div class="payment-methods">
+                    <span>Thanh toán qua:</span>
+                    <div class="payment-icons">
+                        <span>💳</span>
+                        <span>🏦</span>
+                        <span>📱</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Mang vẻ đẹp thiên nhiên đến ngôi nhà bạn</h1>
+            <p class="hero-subtitle">Chúng tôi cung cấp những bó hoa tươi đẹp nhất, được chăm sóc tỉ mỉ từ vườn đến tay bạn</p>
+            <div class="hero-buttons">
+                <a href="#categories" class="btn btn-primary">Xem danh mục</a>
+                <a href="#contact" class="btn btn-secondary">Liên hệ ngay</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="/placeholder.svg?height=500&width=600" alt="Beautiful flower arrangement">
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="categories">
+        <div class="container">
+            <h2 class="section-title">Danh mục hoa</h2>
+            <div class="category-filters">
+                <label for="all" class="category-btn">
+                    <span class="category-icon">🌺</span>
+                    <span>Tất cả</span>
+                </label>
+                <label for="rose" class="category-btn" onclick="scrollToProducts()">
+                    <span class="category-icon">🌹</span>
+                    <span>Hoa hồng</span>
+                </label>
+                <label for="tulip" class="category-btn" onclick="scrollToProducts()">
+                    <span class="category-icon">🌷</span>
+                    <span>Hoa tulip</span>
+                </label>
+                <label for="lily" class="category-btn" onclick="scrollToProducts()">
+                    <span class="category-icon">🌸</span>
+                    <span>Hoa lily</span>
+                </label>
+                <label for="sunflower" class="category-btn" onclick="scrollToProducts()">
+                    <span class="category-icon">🌻</span>
+                    <span>Hoa hướng dương</span>
+                </label>
+                <label for="orchid" class="category-btn" onclick="scrollToProducts()">
+                    <span class="category-icon">🌺</span>
+                    <span>Hoa lan</span>
+                </label>
+                <label for="carnation" class="category-btn" onclick="scrollToProducts()">
+                    <span class="category-icon">🌼</span>
+                    <span>Hoa cẩm chướng</span>
+                </label>
+                <label for="chrysanthemum" class="category-btn" onclick="scrollToProducts()">
+                    <span class="category-icon">🌻</span>
+                    <span>Hoa cúc</span>
+                </label>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Sản phẩm nổi bật</h2>
+            <div class="products-grid">
+                <!-- Rose Products -->
+                <div class="product-card rose-category">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Hoa hồng đỏ">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hoa hồng đỏ</h3>
+                        <p class="product-price">450.000đ</p>
+                        <p class="product-description">Bó hoa hồng đỏ tươi thắm, biểu tượng của tình yêu</p>
+                        <label for="product-1" class="btn btn-primary add-to-cart">Thêm vào giỏ</label>
+                    </div>
+                </div>
+
+                <div class="product-card rose-category">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Hoa hồng trắng">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hoa hồng trắng</h3>
+                        <p class="product-price">420.000đ</p>
+                        <p class="product-description">Hoa hồng trắng tinh khôi, thanh lịch và sang trọng</p>
+                        <label for="product-2" class="btn btn-primary add-to-cart">Thêm vào giỏ</label>
+                    </div>
+                </div>
+
+                <div class="product-card rose-category">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Hoa hồng hồng">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hoa hồng hồng</h3>
+                        <p class="product-price">430.000đ</p>
+                        <p class="product-description">Hoa hồng màu hồng dịu dàng, ngọt ngào</p>
+                        <label for="product-3" class="btn btn-primary add-to-cart">Thêm vào giỏ</label>
+                    </div>
+                </div>
+
+                <!-- Tulip Products -->
+                <div class="product-card tulip-category">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Hoa tulip đỏ">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hoa tulip đỏ</h3>
+                        <p class="product-price">380.000đ</p>
+                        <p class="product-description">Hoa tulip đỏ rực rỡ, mang phong cách châu Âu</p>
+                        <label for="product-4" class="btn btn-primary add-to-cart">Thêm vào giỏ</label>
+                    </div>
+                </div>
+
+                <div class="product-card tulip-category">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Hoa tulip vàng">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hoa tulip vàng</h3>
+                        <p class="product-price">360.000đ</p>
+                        <p class="product-description">Hoa tulip vàng tươi sáng, mang lại niềm vui</p>
+                        <label for="product-5" class="btn btn-primary add-to-cart">Thêm vào giỏ</label>
+                    </div>
+                </div>
+
+                <div class="product-card tulip-category">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Hoa tulip tím">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hoa tulip tím</h3>
+                        <p class="product-price">390.000đ</p>
+                        <p class="product-description">Hoa tulip tím bí ẩn, quyến rũ và độc đáo</p>
+                        <label for="product-6" class="btn btn-primary add-to-cart">Thêm vào giỏ</label>
+                    </div>
+                </div>
+
+                <!-- Lily Products -->
+                <div class="product-card lily-category">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Hoa lily trắng">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hoa lily trắng</h3>
+                        <p class="product-price">520.000đ</p>
+                        <p class="product-description">Hoa lily trắng thanh khiết, hương thơm dịu nhẹ</p>
+                        <label for="product-7" class="btn btn-primary add-to-cart">Thêm vào giỏ</label>
+                    </div>
+                </div>
+
+                <div class="product-card lily-category">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Hoa lily hồng">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hoa lily hồng</h3>
+                        <p class="product-price">540.000đ</p>
+                        <p class="product-description">Hoa lily hồng nhẹ nhàng, thể hiện sự tinh tế</p>
+                        <label for="product-8" class="btn btn-primary add-to-cart">Thêm vào giỏ</label>
+                    </div>
+                </div>
+
+                <!-- Sunflower Products -->
+                <div class="product-card sunflower-category">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Hoa hướng dương">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hoa hướng dương</h3>
+                        <p class="product-price">280.000đ</p>
+                        <p class="product-description">Hoa hướng dương tươi vui, mang lại năng lượng tích cực</p>
+                        <label for="product-9" class="btn btn-primary add-to-cart">Thêm vào giỏ</label>
+                    </div>
+                </div>
+
+                <div class="product-card sunflower-category">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Hoa hướng dương mini">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hoa hướng dương mini</h3>
+                        <p class="product-price">250.000đ</p>
+                        <p class="product-description">Hoa hướng dương mini xinh xắn, dễ thương</p>
+                        <label for="product-10" class="btn btn-primary add-to-cart">Thêm vào giỏ</label>
+                    </div>
+                </div>
+
+                <!-- Orchid Products -->
+                <div class="product-card orchid-category">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Hoa lan tím">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hoa lan tím</h3>
+                        <p class="product-price">680.000đ</p>
+                        <p class="product-description">Hoa lan tím quý phái, sang trọng và đẳng cấp</p>
+                        <label for="product-11" class="btn btn-primary add-to-cart">Thêm vào giỏ</label>
+                    </div>
+                </div>
+
+                <div class="product-card orchid-category">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Hoa lan trắng">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hoa lan trắng</h3>
+                        <p class="product-price">720.000đ</p>
+                        <p class="product-description">Hoa lan trắng tinh khôi, biểu tượng của sự thuần khiết</p>
+                        <label for="product-12" class="btn btn-primary add-to-cart">Thêm vào giỏ</label>
+                    </div>
+                </div>
+
+                <!-- Carnation Products -->
+                <div class="product-card carnation-category">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Hoa cẩm chướng đỏ">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hoa cẩm chướng đỏ</h3>
+                        <p class="product-price">320.000đ</p>
+                        <p class="product-description">Hoa cẩm chướng đỏ thắm, bền lâu và đẹp mắt</p>
+                        <label for="product-13" class="btn btn-primary add-to-cart">Thêm vào giỏ</label>
+                    </div>
+                </div>
+
+                <div class="product-card carnation-category">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Hoa cẩm chướng hồng">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hoa cẩm chướng hồng</h3>
+                        <p class="product-price">300.000đ</p>
+                        <p class="product-description">Hoa cẩm chướng hồng dịu dàng, thể hiện tình cảm</p>
+                        <label for="product-14" class="btn btn-primary add-to-cart">Thêm vào giỏ</label>
+                    </div>
+                </div>
+
+                <!-- Chrysanthemum Products -->
+                <div class="product-card chrysanthemum-category">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Hoa cúc vàng">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hoa cúc vàng</h3>
+                        <p class="product-price">240.000đ</p>
+                        <p class="product-description">Hoa cúc vàng tươi sáng, mang ý nghĩa may mắn</p>
+                        <label for="product-15" class="btn btn-primary add-to-cart">Thêm vào giỏ</label>
+                    </div>
+                </div>
+
+                <div class="product-card chrysanthemum-category">
+                    <div class="product-image">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Hoa cúc trắng">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hoa cúc trắng</h3>
+                        <p class="product-price">220.000đ</p>
+                        <p class="product-description">Hoa cúc trắng thanh lịch, phù hợp mọi dịp</p>
+                        <label for="product-16" class="btn btn-primary add-to-cart">Thêm vào giỏ</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Về chúng tôi</h2>
+                    <p>Với hơn 10 năm kinh nghiệm trong ngành hoa tươi, <strong>Hoa Tươi Xinh</strong> tự hào là địa chỉ tin cậy của khách hàng khi cần những bó hoa đẹp nhất.</p>
+                    <p>Chúng tôi cam kết:</p>
+                    <ul class="about-list">
+                        <li>✓ Hoa tươi 100%, nhập khẩu và trong nước</li>
+                        <li>✓ Thiết kế độc đáo, sáng tạo</li>
+                        <li>✓ Giao hàng nhanh chóng, đúng hẹn</li>
+                        <li>✓ Giá cả hợp lý, chất lượng cao</li>
+                        <li>✓ Tư vấn nhiệt tình, chuyên nghiệp</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="/placeholder.svg?height=400&width=500" alt="Flower shop interior">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Liên hệ với chúng tôi</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>📍 Địa chỉ</h3>
+                        <p>123 Đường Hoa Tươi, Quận 1, TP.HCM</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>📞 Điện thoại</h3>
+                        <p>0123 456 789</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>✉️ Email</h3>
+                        <p>info@hoatuoixinh.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>🕒 Giờ mở cửa</h3>
+                        <p>Thứ 2 - Chủ nhật: 7:00 - 21:00</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Họ và tên" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Số điện thoại" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Tin nhắn của bạn" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Gửi tin nhắn</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🌸 Hoa Tươi Xinh</h3>
+                    <p>Mang vẻ đẹp thiên nhiên đến mọi ngôi nhà</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Danh mục hoa</h4>
+                    <ul>
+                        <li><a href="#products">Hoa hồng</a></li>
+                        <li><a href="#products">Hoa tulip</a></li>
+                        <li><a href="#products">Hoa lily</a></li>
+                        <li><a href="#products">Hoa lan</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Liên kết nhanh</h4>
+                    <ul>
+                        <li><a href="#home">Trang chủ</a></li>
+                        <li><a href="#categories">Danh mục</a></li>
+                        <li><a href="#products">Sản phẩm</a></li>
+                        <li><a href="#about">Giới thiệu</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Theo dõi chúng tôi</h4>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Zalo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hoa Tươi Xinh. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+<script>
+function scrollToProducts() {
+  setTimeout(function() {
+    document.getElementById('products').scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }, 100);
+}
+
+// Cart functionality
+let quantities = {};
+const prices = {
+  1: 450000, 2: 420000, 3: 430000, 4: 380000,
+  5: 360000, 6: 390000, 7: 520000, 8: 540000,
+  9: 280000, 10: 250000, 11: 680000, 12: 720000,
+  13: 320000, 14: 300000, 15: 240000, 16: 220000
+};
+
+function updateQuantity(productId, change) {
+  const checkbox = document.getElementById(`product-${productId}`);
+  if (!checkbox || !checkbox.checked) return;
+  
+  if (!quantities[productId]) quantities[productId] = 1;
+  quantities[productId] = Math.max(1, quantities[productId] + change);
+  
+  const qtyElement = document.getElementById(`qty-${productId}`);
+  if (qtyElement) {
+    qtyElement.textContent = quantities[productId];
+  }
+  
+  updateCartTotals();
+}
+
+function updateCartTotals() {
+  let subtotal = 0;
+  let itemCount = 0;
+  
+  // Calculate totals based on checked products
+  for (let i = 1; i <= 16; i++) {
+    const checkbox = document.getElementById(`product-${i}`);
+    if (checkbox && checkbox.checked) {
+      const qty = quantities[i] || 1;
+      subtotal += prices[i] * qty;
+      itemCount += qty;
+    }
+  }
+  
+  // Update all total displays
+  const subtotalElements = document.querySelectorAll('.subtotal-amount');
+  const totalElements = document.querySelectorAll('.total-amount');
+  const checkoutElements = document.querySelectorAll('.checkout-amount');
+  const itemCountElements = document.querySelectorAll('.item-count');
+  
+  subtotalElements.forEach(el => el.textContent = formatPrice(subtotal));
+  totalElements.forEach(el => el.textContent = formatPrice(subtotal));
+  checkoutElements.forEach(el => el.textContent = formatPrice(subtotal));
+  itemCountElements.forEach(el => el.textContent = itemCount);
+  
+  // Update cart count in header
+  const cartCountElements = document.querySelectorAll('.cart-count');
+  cartCountElements.forEach(el => {
+    // Remove the ::after content and set directly
+    el.style.setProperty('--cart-count', itemCount);
+    el.setAttribute('data-count', itemCount);
+  });
+}
+
+function formatPrice(price) {
+  return new Intl.NumberFormat('vi-VN').format(price) + 'đ';
+}
+
+function clearCart() {
+  if (confirm('Bạn có chắc muốn xóa tất cả sản phẩm khỏi giỏ hàng?')) {
+    // Uncheck all products
+    for (let i = 1; i <= 16; i++) {
+      const checkbox = document.getElementById(`product-${i}`);
+      if (checkbox) {
+        checkbox.checked = false;
+      }
+    }
+    
+    // Reset quantities
+    quantities = {};
+    
+    // Reset all quantity displays
+    for (let i = 1; i <= 16; i++) {
+      const qtyElement = document.getElementById(`qty-${i}`);
+      if (qtyElement) {
+        qtyElement.textContent = '1';
+      }
+    }
+    
+    updateCartTotals();
+  }
+}
+
+function processPayment() {
+  if (confirm('Xác nhận thanh toán đơn hàng?')) {
+    // Show payment success notification
+    const paymentNotification = document.querySelector('.payment-success-message');
+    paymentNotification.style.opacity = '1';
+    paymentNotification.style.transform = 'translateX(0)';
+    
+    // Hide notification after 4 seconds
+    setTimeout(() => {
+      paymentNotification.style.opacity = '0';
+      paymentNotification.style.transform = 'translateX(100%)';
+    }, 4000);
+    
+    // Clear cart after successful payment
+    setTimeout(() => {
+      clearCart();
+      // Close cart sidebar
+      document.getElementById('cart-toggle').checked = false;
+    }, 2000);
+  }
+}
+
+// Initialize cart functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Add event listeners to all product checkboxes
+  for (let i = 1; i <= 16; i++) {
+    const checkbox = document.getElementById(`product-${i}`);
+    if (checkbox) {
+      checkbox.addEventListener('change', function() {
+        if (this.checked) {
+          // Product added to cart
+          if (!quantities[i]) {
+            quantities[i] = 1;
+          }
+          // Reset quantity display
+          const qtyElement = document.getElementById(`qty-${i}`);
+          if (qtyElement) {
+            qtyElement.textContent = quantities[i];
+          }
+        } else {
+          // Product removed from cart
+          if (quantities[i]) {
+            delete quantities[i];
+          }
+          // Reset quantity display
+          const qtyElement = document.getElementById(`qty-${i}`);
+          if (qtyElement) {
+            qtyElement.textContent = '1';
+          }
+        }
+        updateCartTotals();
+      });
+    }
+  }
+  
+  // Initial cart update
+  updateCartTotals();
+});
+</script>
+</body>
+</html>
